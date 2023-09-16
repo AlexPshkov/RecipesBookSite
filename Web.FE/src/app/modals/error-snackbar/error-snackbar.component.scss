@@ -1,0 +1,38 @@
+@use "../../../styles" as main-style;
+
+.snack-block {
+  display: flex;
+  gap: 30px;
+
+  .content {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    align-items: baseline;
+    text-align: center;
+
+    h3 {
+      color: main-style.get-color(W100);
+      margin-bottom: 0;
+    }
+
+    h4 {
+      color: main-style.get-color(100);
+      margin-bottom: 0;
+    }
+  }
+
+
+  #snack-close {
+    position: relative;
+    top: -7px;
+    width: 13px;
+  }
+
+  #snack-close:hover {
+    transform: rotate(5deg);
+  }
+}
+
+
+

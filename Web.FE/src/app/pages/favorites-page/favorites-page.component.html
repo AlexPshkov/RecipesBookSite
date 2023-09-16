@@ -1,0 +1,22 @@
+<div class="container mat-typography ">
+
+
+  <header>
+    <!--First block-->
+    <div class="title-block">
+      <h2>Избранное</h2>
+    </div>
+  </header>
+
+  <div class="recipes-list">
+    <recipe-block *ngFor="let recipe of favorites" [recipeObject]="recipe"
+                  (recipeChange)="loadFavorites()"></recipe-block>
+  </div>
+
+  <h3 *ngIf="favorites.length == 0" id="empty-list-message">Ваш список пуст</h3>
+
+  <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить
+    еще
+  </button>
+
+</div>

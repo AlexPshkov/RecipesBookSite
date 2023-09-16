@@ -1,0 +1,231 @@
+@use '../../../styles' as main-style;
+
+header {
+  .title-block {
+    h2 {
+      color: main-style.get-color(100);
+      font-size: 42px !important;
+      line-height: 62px !important;
+    }
+  }
+}
+
+.data-change {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+  background-color: main-style.get-color(W);
+  border-radius: 64px 16px 16px 16px;
+  padding: 61px 73px;
+  margin-top: 50px;
+
+  #make-edit {
+    color: main-style.get-color(55);
+    opacity: 1;
+    align-self: flex-end;
+    position: relative;
+    right: -32px;
+    top: -32px;
+  }
+
+  #make-edit:hover {
+    color: main-style.get-color(50);
+  }
+
+  .content {
+    display: flex;
+    gap: 40px;
+
+    .left-part {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 4px 26px;
+      box-sizing: border-box;
+      color: main-style.get-color(200);
+      border: rgba(main-style.get-color("200-contrast"), 0.4) 1px solid;
+      border-radius: 16px;
+
+      h4 {
+        color: main-style.get-color(100);
+        opacity: 0.5;
+        font-size: 12px !important;
+        line-height: 28px !important;
+        margin-bottom: -10px;
+      }
+
+      input, textarea {
+        width: 100%;
+        color: inherit;
+        font-size: 16px !important;
+        line-height: 28px !important;
+        margin: 0;
+        resize: none;
+        overflow: auto;
+      }
+
+      textarea {
+        height: 100%;
+      }
+
+      input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+        opacity: 1;
+      }
+
+      input:disabled, textarea:disabled {
+        opacity: 0.5;
+      }
+
+      .password-field {
+        display: flex;
+        flex-direction: row;
+
+        .hide-password-button {
+          color: main-style.get-color("200-contrast");
+          opacity: 0.4;
+        }
+      }
+    }
+
+    .invalid-field {
+      color: main-style.get-color(W100);
+      border: rgba(main-style.get-color(W100), 0.4) 1px solid;
+
+      h4 {
+        color: inherit;
+      }
+
+      input::placeholder {
+        color: inherit;
+      }
+
+    }
+
+    .input-field.big {
+      padding: 11px 33px;
+    }
+  }
+
+  .buttons-block {
+    display: flex;
+    gap: 30px;
+
+    #save-changes-button {
+      width: 50%;
+      padding: 16px 35px;
+      border-radius: 16px;
+      margin-bottom: 0;
+    }
+
+    #cancel-button {
+      color: main-style.get-color();
+      width: 50%;
+      border: 1px solid;
+      padding: 16px 35px;
+      border-radius: 16px;
+      background-color: transparent;
+      margin-bottom: 0;
+    }
+
+    #save-changes-button:enabled:hover {
+      background-color: rgba(main-style.get-color(), 0.9);
+    }
+
+    #cancel-button:hover {
+      background-color: rgba(main-style.get-color(), 0.05);
+    }
+  }
+}
+
+.stats-blocks {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+
+  .stat-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 32px 25px;
+    background: main-style.get-color(W);
+    box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+    border-radius: 24px;
+    cursor: pointer;
+
+    .left-part {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+
+      .stats-icon {
+        display: inline-flex;
+        padding: 13px 14px;
+        background-color: main-style.get-color(400);
+        color: main-style.get-color(800);
+        border-radius: 12px;
+      }
+
+      h2 {
+        color: main-style.get-color(100);
+        font-size: 18px !important;
+        line-height: 30px !important;
+        margin-bottom: 0;
+      }
+    }
+
+    h3 {
+      font-size: 107px !important;
+      line-height: 30px !important;
+      color: main-style.get-color();
+      margin-bottom: 0;
+    }
+
+  }
+}
+
+.recipes-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+
+  .title {
+    font-size: 24px !important;
+    line-height: 30px !important;
+    color: main-style.get-color(100);
+    margin-bottom: 20px;
+  }
+
+  recipe-block:hover {
+    transform: scale(1.01);
+  }
+
+  #load-more-button {
+    align-self: center;
+    margin-top: 65px;
+    color: main-style.get-color();
+    border: 1px solid;
+    border-radius: 16px;
+
+    line-height: 22px !important;
+    width: 309px;
+    padding: 22px 65px;
+    margin-bottom: 0;
+    background-color: transparent;
+  }
+
+  #load-more-button:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
+  }
+}

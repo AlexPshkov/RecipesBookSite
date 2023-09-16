@@ -1,4 +1,6 @@
-﻿namespace Domain.Exceptions;
+﻿using System.Net;
+
+namespace Domain.Exceptions;
 
 public abstract class AbstractRuntimeException : Exception
 {
@@ -14,4 +16,6 @@ public abstract class AbstractRuntimeException : Exception
     protected AbstractRuntimeException( string message ) : base( message )
     {
     }
+
+    public abstract int GetHttpStatusCode();
 }

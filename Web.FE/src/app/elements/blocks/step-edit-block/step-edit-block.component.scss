@@ -1,0 +1,48 @@
+@use '../../../../styles' as main-style;
+
+.step-block {
+  padding: 50px 70px 70px 70px;
+  background: main-style.get-color(W);
+  box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+  border-radius: 24px;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: main-style.get-color(200);
+    font-size: 18px !important;
+    line-height: 30px !important;
+  }
+
+  .cross-remove {
+    color: main-style.get-color("200-contrast");
+    opacity: 0.4;
+  }
+
+  .cross-remove:hover {
+    opacity: 0.6;
+    transform: rotate(5deg);
+  }
+
+  .step-description {
+    padding: 11px 10px 0 24px;
+    border: 1px solid rgba(main-style.get-color("200-contrast"), 0.4);
+    border-radius: 16px;
+
+    textarea {
+      color: main-style.get-color(100);
+      opacity: 0.5;
+      min-height: 127px;
+      //max-height: 302px;
+      width: 100%;
+      font-size: 16px;
+      line-height: 28px;
+    }
+
+    textarea:not(:placeholder-shown) {
+      opacity: 1;
+    }
+  }
+
+}

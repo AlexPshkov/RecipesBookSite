@@ -33,7 +33,7 @@ namespace Web.Api.Filters
             ErrorDto exceptionDto = new ErrorDto
             {
                 Message = abstractRuntimeException.Message,
-                StatusCode = 500
+                StatusCode = abstractRuntimeException.GetHttpStatusCode()
             };
             
             context.Result = new ContentResult

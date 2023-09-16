@@ -1,0 +1,191 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use 'palettes/default-palette' as default-palette;
+
+@include mat.core();
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap'); //Import Montserrat font
+
+//mat.$theme-ignore-duplication-warnings: true;
+
+
+//================[INIT]============================
+
+$mat-typography: mat.define-typography-config(//Typography config
+  $headline: mat.define-typography-level(//<h1>
+    $font-family: Montserrat,
+    $font-weight: 700,
+    $font-size: 24px,
+    $line-height: 29.26px,
+    $letter-spacing: normal,
+  ),
+  $title: mat.define-typography-level(//<h2>
+    $font-family: Montserrat,
+    $font-weight: 700,
+    $font-size: 24px,
+    $line-height: 29.26px,
+    $letter-spacing: normal,
+  ),
+  $subheading-2: mat.define-typography-level(//<h3>
+    $font-family: Montserrat,
+    $font-weight: 600,
+    $font-size: 18px,
+    $line-height: 21.94px,
+    $letter-spacing: normal,
+  ),
+  $subheading-1: mat.define-typography-level(//<h4>
+    $font-family: Montserrat,
+    $font-weight: 400,
+    $font-size: 18px,
+    $line-height: 26px,
+    $letter-spacing: normal,
+  ),
+  $display-4: mat.define-typography-level(//For any others
+    $font-family: Montserrat,
+    $font-weight: 600,
+    $font-size: 18px,
+    $line-height: 28px,
+    $letter-spacing: normal,
+  ),
+  $display-3: mat.define-typography-level(//For any others
+    $font-family: Montserrat,
+    $font-weight: 500,
+    $font-size: 20px,
+    $line-height: 24px,
+    $letter-spacing: normal
+  )
+);
+
+$light-primary: mat.define-palette(default-palette.$light-palette, 600);
+$light-accent: mat.define-palette(default-palette.$light-palette, 100);
+$light-theme: mat.define-light-theme((//Define theme
+  color: (
+    primary: $light-primary,
+    accent: $light-accent
+  ),
+  typography: $mat-typography,
+));
+
+// Define a dark theme
+$dark-primary: mat.define-palette(default-palette.$dark-palette, 600);
+$dark-accent: mat.define-palette(default-palette.$dark-palette, 100);
+$dark-theme: mat.define-dark-theme((//Define dark theme
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent
+  ),
+  typography: $mat-typography,
+));
+
+@include mat.all-component-typographies($dark-theme); //Set typography
+//================[INIT]============================
+
+
+//================[MIXINS && FUNCTIONS]============================
+$theme: "light";
+
+@function is-dark-theme() {
+  @return $theme == "dark";
+}
+
+
+@mixin set-theme($theme-name: "light") {
+  $theme: $theme-name !global;
+
+  @if (is-dark-theme()) {
+    @include mat.all-component-colors($dark-theme);
+  } @else {
+    @include mat.all-component-colors($light-theme);
+  }
+}
+
+@function get-color($number: 600) {
+  @if (is-dark-theme()) {
+    @return mat.get-color-from-palette($dark-primary, $number);
+  } @else {
+    @return mat.get-color-from-palette($light-primary, $number);
+  }
+}
+
+//================[MIXINS && FUNCTIONS]============================
+
+
+@include set-theme();
+
+html, body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: get-color('50-contrast');
+}
+
+
+.site-content {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+  color: get-color(450);
+}
+
+.container {
+  padding: 20px 120px 100px;
+  display: flex;
+  flex-grow: 1;
+  min-height: 70vh;
+  flex-direction: column;
+  align-items: stretch;
+
+  @media screen and (max-width: 860px) {
+    padding: 20px;
+  }
+}
+
+input, .input {
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+mat-dialog-container {
+  background: get-color(W) !important;
+  box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05) !important;
+  padding: 0 !important;
+  border-radius: 24px !important;
+}
+
+.mat-snack-bar-container {
+  background: get-color(W) !important;
+  color: get-color(100) !important;
+  max-width: none !important;
+}
+
+textarea, .input {
+  overflow: hidden;
+  outline: none;
+  border: none;
+  resize: none;
+  background-color: transparent;
+}
+
+button span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-curve {
+  color: get-color(450);
+}

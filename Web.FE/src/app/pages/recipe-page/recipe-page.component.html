@@ -1,0 +1,51 @@
+<div class="container mat-typography ">
+
+  <header>
+
+    <div class="title-block">
+      <h2>{{recipeObject.recipeName}}</h2>
+
+      <div *ngIf="recipeObject.isCreator" class="right-part">
+        <button mat-flat-button id="remove-recipe-button" class="mat-display-4" (click)="removeRecipe()">
+          <custom-svg name="trash-icon"></custom-svg>
+        </button>
+
+        <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="editRecipe()">
+          <custom-svg class="label" name="pen-icon"></custom-svg>
+          Редактировать
+        </button>
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <recipe-block class="inactive" [recipeObject]="recipeObject"></recipe-block>
+
+  <div class="main-content">
+
+    <div class="ingredients-column">
+      <h2 *ngIf="recipeObject.ingredients.length > 0" class="column-title">Ингредиенты</h2>
+
+      <div class="ingredient-block" *ngFor="let ingredient of recipeObject.ingredients">
+        <h3 class="ingredient-title">{{ingredient.title}}</h3>
+        <h4 class="ingredient-content" [innerHtml]="ingredient.description | nlToBr"></h4>
+      </div>
+
+    </div>
+
+
+    <div class="steps-column">
+
+      <div class="step-block" *ngFor="let step of recipeObject.steps; let ind = index">
+        <h3 class="step-title">Шаг {{ind + 1}}</h3>
+        <h4 class="step-content">{{step.description}}</h4>
+      </div>
+
+      <h3 id="bon-appetit">Приятного аппетита!</h3>
+
+    </div>
+  </div>
+
+</div>

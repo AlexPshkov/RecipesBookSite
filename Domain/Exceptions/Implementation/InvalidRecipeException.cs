@@ -13,4 +13,9 @@ public class InvalidRecipeException : AbstractRuntimeException
         : base( $"Invalid recipe {recipeEntity} Error: {message}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 412;
+    }
 }

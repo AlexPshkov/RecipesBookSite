@@ -1,0 +1,11 @@
+<div class="ingredient-block" @fadeAnimation>
+  <custom-svg name="cross-exit-icon" class="cross-remove" (click)="removeBlock()"></custom-svg>
+  <div class="input-title">
+    <input trimContent [maxLength]="50" class="mat-h4" type="text" placeholder="Заголовок для ингридиентов"
+           [(ngModel)]="ingredient!.title">
+  </div>
+  <div class="input-ingredients-list">
+    <textarea trimContent autosize [maxLength]="300" class="mat-h4" placeholder="Список подуктов для категории"
+              [(ngModel)]="ingredient!.description"></textarea>
+  </div>
+</div>

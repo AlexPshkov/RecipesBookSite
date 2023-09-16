@@ -12,4 +12,9 @@ public class InvalidUserException : AbstractRuntimeException
         : base( $"Invalid user {userEntity} Error: {message}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 412;
+    }
 }

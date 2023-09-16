@@ -1,0 +1,108 @@
+@use '../../../../styles' as main-style;
+
+.best-recipe {
+  width: 100%;
+  margin-top: 157px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 73px;
+  height: 543px;
+
+  .image {
+    display: flex;
+    align-items: flex-end;
+    flex-shrink: 0;
+    width: 48.1%;
+    background-color: main-style.get-color(400);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    resize: both;
+    border-radius: 72px 0;
+    cursor: pointer;
+
+    .author-tag {
+      display: inline;
+      padding: 2px 16px;
+      background-color: main-style.get-color(W);
+      margin-bottom: 38px;
+      font-size: 16px !important;
+      line-height: 28px !important;
+      color: main-style.get-color();
+      border-radius: 0 7px 7px 0;
+      cursor: pointer;
+    }
+
+    .author-tag:hover {
+      color: main-style.get-color(800);
+      background-color: main-style.get-color('50-contrast');
+    }
+  }
+
+  .content {
+    width: 100%;
+
+    .labels {
+      .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+
+        .recipe-value-amount {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          custom-svg {
+            color: main-style.get-color(B);
+            opacity: 0.5;
+          }
+        }
+
+        h4 {
+          color: main-style.get-color(100);
+          font-size: 16px !important;
+          line-height: 28px !important;
+          margin-bottom: 0;
+        }
+
+      }
+
+      #recipe-of-the-day-icon {
+        color: main-style.get-color();
+        margin-top: 23px;
+      }
+    }
+
+    .about {
+      margin-top: 32px;
+
+      .recipe-name {
+        display: inline-flex;
+        cursor: pointer;
+        color: main-style.get-color(100);
+        font-size: 42px !important;
+        line-height: 60px !important;
+        text-transform: capitalize;
+        border: 1px solid transparent;
+      }
+
+      .recipe-name:hover {
+        transform: translateY(0.5px);
+        //border-bottom: 1px dashed;
+      }
+
+      h4 {
+        color: main-style.get-color(200);
+        font-size: 18px !important;
+        line-height: 32px !important;
+        font-feature-settings: 'case' on !important;
+      }
+    }
+  }
+}
+
+.best-recipe:hover {
+  transform: scale(1.01);
+}

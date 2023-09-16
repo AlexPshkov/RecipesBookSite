@@ -1,0 +1,26 @@
+<div class="best-recipe" *ngIf="recipeObject != null">
+  <div class="image" [style.background-image]="recipeObject.imagePath | imageUrl" (click)="openRecipePage()">
+    <div class="author-tag">@{{recipeObject.userLogin}}</div>
+  </div>
+
+  <div class="content">
+    <div class="labels">
+      <div class="buttons">
+        <div class="recipe-value-amount">
+          <custom-svg class="favorite-icon" name="heart-icon"></custom-svg>
+          <h4>{{recipeObject.likesAmount}}</h4>
+        </div>
+        <div class="recipe-value-amount">
+          <custom-svg class="timer-icon" name="timer-icon"></custom-svg>
+          <h4>{{recipeObject.requiredTime}} минут</h4>
+        </div>
+      </div>
+      <custom-svg id="recipe-of-the-day-icon" name="recipe-of-the-day"></custom-svg>
+    </div>
+    <div class="about">
+      <h2 class="recipe-name" (click)="openRecipePage()">{{recipeObject.recipeName}}</h2>
+      <h4>{{recipeObject.recipeDescription}}</h4>
+    </div>
+  </div>
+
+</div>

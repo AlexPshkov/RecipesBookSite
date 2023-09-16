@@ -1,0 +1,99 @@
+<div class="container mat-typography ">
+
+
+  <header>
+    <div class="title-block">
+      <h2>Мой профиль</h2>
+    </div>
+  </header>
+
+  <div class="data-change">
+    <custom-svg *ngIf="!editMode" id="make-edit" name="pen-icon" (click)="toggleEditMode()"></custom-svg>
+
+    <div class="content" [formGroup]="form">
+      <div class="left-part">
+        <div class="input-field" [class.invalid-field]="form.controls['userName'].invalid">
+          <h4>Имя</h4>
+          <input trimContent [maxlength]="20" class="mat-h4" type="text" placeholder="Введите новое имя" formControlName="userName">
+        </div>
+
+        <div class="input-field" [class.invalid-field]="form.controls['login'].invalid">
+          <h4>Логин</h4>
+          <input noSpaces onlyLowerCase [maxlength]="100" class="mat-h4" type="text" placeholder="Введите новый логин" formControlName="login">
+        </div>
+
+        <div class="input-field" [class.invalid-field]="form.controls['password'].invalid">
+          <div class="password-field">
+            <input noSpaces #passInput matInput class="mat-h4" [maxlength]="400" [type]="hidePassword ? 'password' : 'text'"
+                   placeholder="Введите новый пароль" formControlName="password">
+            <button mat-icon-button matSuffix [disabled]="passInput.disabled" (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <mat-icon class="hide-password-button">{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="buttons-block" *ngIf="editMode">
+          <button mat-flat-button color="primary" id="save-changes-button" class="mat-display-4" (click)="onSubmit()"
+                  [disabled]="form.invalid">
+            Применить
+          </button>
+          <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="toggleEditMode()">
+            Отменить
+          </button>
+        </div>
+
+      </div>
+
+      <div class="input-field">
+        <textarea trimContent class="mat-h4"
+                  [maxLength]="400"
+                  placeholder="Напишите немного о себе"
+                  formControlName="description">
+        </textarea>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="stats-blocks">
+
+    <div class="stat-block">
+      <div class="left-part">
+        <custom-svg name="book-icon" class="stats-icon"></custom-svg>
+        <h2>Всего рецептов</h2>
+      </div>
+      <h3>{{statistic.createdRecipesAmount}}</h3>
+    </div>
+
+    <div class="stat-block">
+      <div class="left-part">
+        <custom-svg name="book-icon" class="stats-icon"></custom-svg>
+        <h2>Всего лайков</h2>
+      </div>
+      <h3>{{statistic.likedRecipesAmount}}</h3>
+    </div>
+
+    <div class="stat-block">
+      <div class="left-part">
+        <custom-svg name="book-icon" class="stats-icon"></custom-svg>
+        <h2>В избранных</h2>
+      </div>
+      <h3>{{statistic.favoritesRecipesAmount}}</h3>
+    </div>
+
+  </div>
+
+  <div class="recipes-list">
+    <h2 class="title" *ngIf="recipesList.length > 0">Мои рецепты</h2>
+
+    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"
+                  (recipeChange)="loadUserStatistic()"></recipe-block>
+    <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить
+      еще
+    </button>
+  </div>
+
+</div>
+

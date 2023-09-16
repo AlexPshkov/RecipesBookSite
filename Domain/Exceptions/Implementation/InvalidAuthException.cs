@@ -6,4 +6,9 @@ public class InvalidAuthException : AbstractRuntimeException
         : base("Invalid login or password" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 412;
+    }
 }

@@ -1,0 +1,33 @@
+<div class="container mat-typography">
+  <img id="cross-exit" src="assets/images/svg/cross-exit-icon.svg" alt="" (click)="dialogRef.close()">
+  <h1 mat-dialog-title>Войти</h1>
+
+
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <div mat-dialog-content class="content">
+      <div class="input-field" [class.invalid-field]="this.form.errors?.['wrongData']">
+        <input [maxlength]="100" onlyLowerCase noSpaces class="mat-h4" type="text" placeholder="Логин" formControlName="login"
+               (ngModelChange)="onChange()">
+        <!--      <h4>Подпись снизу</h4>-->
+      </div>
+
+      <div class="input-field" [class.invalid-field]="this.form.errors?.['wrongData']">
+        <input [maxlength]="400" class="mat-h4" noSpaces type="password" placeholder="Пароль" formControlName="password"
+               (ngModelChange)="onChange()">
+        <!--      <h4>Подпись снизу</h4>-->
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="buttons">
+      <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary" id="ok-button"
+              class="mat-display-4">Войти
+      </button>
+      <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="dialogRef.close()">Отмена</button>
+    </div>
+  </form>
+
+
+  <span id="choose-another" class="mat-display-4" (click)="openRegisterDialog()">У меня еще нет аккаунта</span>
+</div>
+
+

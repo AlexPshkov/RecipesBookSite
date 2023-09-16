@@ -1,0 +1,15 @@
+<div class="container mat-typography">
+  <img id="cross-exit" src="assets/images/svg/cross-exit-icon.svg" alt="" (click)="dialogRef.close()">
+  <h1 mat-dialog-title>Выйти</h1>
+
+  <div mat-dialog-content class="content">
+    <h4 class="simple-text">Вы уверены что хотите выйти из аккаунта?</h4>
+  </div>
+
+  <div mat-dialog-actions class="buttons">
+    <button mat-flat-button color="primary" id="ok-button" class="mat-display-4" (click)="exit()">Выйти</button>
+    <button mat-flat-button id="cancel-button" class="mat-display-4" (click)="dialogRef.close()">Отмена</button>
+  </div>
+</div>
+
+

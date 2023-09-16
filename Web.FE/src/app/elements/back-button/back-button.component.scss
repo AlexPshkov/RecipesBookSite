@@ -1,0 +1,26 @@
+@use '../../../styles' as main-style;
+
+.back-button {
+  margin-left: 120px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 13px;
+  color: main-style.get-color();
+  cursor: pointer;
+
+  .label {
+    font-size: 18px !important;
+    line-height: 22px !important;
+    margin-bottom: 0;
+  }
+}
+
+.back-button:hover {
+  color: main-style.get-color(800);
+  transform: translateX(-1.5px);
+}
+
+.hide-button {
+  opacity: 0;
+}

@@ -1,0 +1,56 @@
+<div class="container mat-typography ">
+
+
+  <header>
+
+    <!--First block-->
+    <div class="title-block">
+      <h2>Рецепты</h2>
+      <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="addRecipe()">
+        <custom-svg class="label" name="plus-icon"></custom-svg>
+        Добавить рецепт
+      </button>
+    </div>
+
+    <!--Second block [Filters]-->
+    <div class="filters-block">
+      <div (click)="makeSearch('Просто')">
+        <custom-svg name="book-icon" class="filter-icon"></custom-svg>
+        <h2>Простые блюда</h2>
+      </div>
+      <div (click)="makeSearch('Детское')">
+        <custom-svg name="toy-icon" class="filter-icon"></custom-svg>
+        <h2>Детское</h2>
+      </div>
+      <div (click)="makeSearch('От шеф-повара')">
+        <custom-svg name="hat-icon" class="filter-icon"></custom-svg>
+        <h2>От шеф-поваров</h2>
+      </div>
+      <div (click)="makeSearch('На праздник')">
+        <custom-svg name="firework-icon" class="filter-icon"></custom-svg>
+        <h2>На праздник</h2>
+      </div>
+    </div>
+
+    <div class="search-block">
+      <h2>Поиск рецепта</h2>
+
+      <search-block (searchEvent)="makeSearch($event)" (textChange)="makeSearch($event)" [formControl]="searchControl" [searchString]="searchControl.value"></search-block>
+
+    </div>
+
+
+  </header>
+
+
+  <div class="recipes-list">
+    <recipe-block *ngFor="let recipe of recipesList" [recipeObject]="recipe"></recipe-block>
+
+    <span id="nothing-found" *ngIf="recipesList.length == 0">Ничего нет</span>
+  </div>
+
+  <button *ngIf="isMore" mat-flat-button id="load-more-button" class="mat-display-4" (click)="loadMore()">Загрузить
+    еще
+  </button>
+
+</div>

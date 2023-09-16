@@ -1,0 +1,140 @@
+@use '../../styles' as main-style;
+
+.ng-valid[required], .ng-valid.required {
+  border-left: 5px solid #42A948; /* green */
+}
+
+
+.container {
+  padding: 60px 60px 60px 60px;
+  align-items: flex-start;
+  min-height: auto;
+}
+
+#cross-exit {
+  position: relative;
+  align-self: flex-end;
+  right: -21px;
+  top: -21px;
+}
+
+#cross-exit:hover {
+  transform: rotate(5deg);
+}
+
+h1 {
+  color: main-style.get-color(100);
+  margin: 0 !important;
+}
+
+h4.simple-text {
+  max-width: 577px;
+  color: main-style.get-color(200);
+  margin-bottom: 20px;
+  line-height: 28px !important;
+}
+
+.invalid-field > * {
+  opacity: 1 !important;
+  color: main-style.get-color(W100) !important;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 47px;
+
+
+  .input-field {
+    width: 100%;
+
+    h4 {
+      color: main-style.get-color(100);
+      opacity: 0.3;
+      font-size: 12px !important;
+      line-height: 28px !important;
+      margin: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 26px;
+      font-size: 16px !important;
+      line-height: 28px !important;
+
+      color: main-style.get-color("200-contrast");
+      opacity: 0.4;
+
+      box-sizing: border-box;
+      border: 1px solid;
+      border-radius: 16px;
+      margin: 0;
+    }
+
+    input::placeholder {
+      color: inherit;
+    }
+
+    input:not(:placeholder-shown) {
+      opacity: 1;
+    }
+
+
+    input:focus, input:hover {
+      opacity: 1;
+    }
+  }
+
+  .passes-block {
+    width: 100%;
+    display: flex;
+    gap: 24px;
+  }
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  gap: 22px;
+
+
+  #ok-button {
+    min-width: 278px;
+    padding: 16px 35px;
+    border-radius: 16px;
+    margin: 0;
+  }
+
+  #cancel-button {
+    min-width: 278px;
+    color: main-style.get-color();
+    border: 1px solid;
+    padding: 16px 35px;
+    border-radius: 16px;
+    background-color: transparent;
+    margin: 0;
+  }
+
+  #ok-button:enabled:hover {
+    background-color: rgba(main-style.get-color(), 0.9);
+  }
+
+  #cancel-button:enabled:hover {
+    background-color: rgba(main-style.get-color(), 0.05);
+  }
+}
+
+#choose-another {
+  align-self: center;
+  cursor: pointer;
+  margin: 40px 0 0;
+  color: main-style.get-color();
+  border-bottom: 1px dashed;
+}
+
+#choose-another:hover {
+  color: main-style.get-color(800);
+}

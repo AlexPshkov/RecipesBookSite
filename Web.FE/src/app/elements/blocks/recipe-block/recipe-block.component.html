@@ -1,0 +1,61 @@
+<div class="recipe-block">
+  <div class="image" [style.background-image]="recipeObject.imagePath | imageUrl" (click)="openRecipePage()">
+    <div class="author-tag">@{{recipeObject.userLogin}}</div>
+  </div>
+
+  <div class="content">
+    <div class="upper-part">
+      <div class="tags-list">
+        <h4 *ngFor="let tag of recipeObject.tags" (click)="makeSearch(tag.tagName)">{{tag.tagName}}</h4>
+      </div>
+
+      <div class="buttons">
+        <div class="button mat-display-4" id="favorite-button" (click)="favoriteButton()">
+          <div *ngIf="recipeObject.isFavorite then favorite else nonFavorite"></div>
+          <ng-template #favorite>
+            <custom-svg name="star-filled-icon"></custom-svg>
+          </ng-template>
+          <ng-template #nonFavorite>
+            <custom-svg name="star-icon"></custom-svg>
+          </ng-template>
+          {{recipeObject.favoritesAmount}}
+        </div>
+        <div class="button mat-display-4" id="like-button" (click)="likeButton()">
+          <div *ngIf="recipeObject.isLiked then liked else nonLiked"></div>
+          <ng-template #liked>
+            <custom-svg name="heart-filled-icon"></custom-svg>
+          </ng-template>
+          <ng-template #nonLiked>
+            <custom-svg name="heart-icon"></custom-svg>
+          </ng-template>
+          {{recipeObject.likesAmount}}
+        </div>
+      </div>
+    </div>
+
+    <div class="about">
+      <h2 id="recipe-name" (click)="openRecipePage()">{{recipeObject.recipeName}}</h2>
+      <h4>{{recipeObject.recipeDescription}}</h4>
+    </div>
+
+    <div class="info-part">
+
+      <div class="info-block">
+        <custom-svg name="timer-big-icon"></custom-svg>
+        <div class="info">
+          <h4 class="info-tag">Время приготовления:</h4>
+          <h4 class="info-value">{{recipeObject.requiredTime}}</h4>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <custom-svg name="two-persons-icon"></custom-svg>
+        <div class="info">
+          <h4 class="info-tag">Рецепт на:</h4>
+          <h4 class="info-value">{{recipeObject.servingsAmount}}</h4>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

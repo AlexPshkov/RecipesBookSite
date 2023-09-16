@@ -6,4 +6,9 @@ public class InvalidParamException : AbstractRuntimeException
         : base( $"Invalid {paramName}: {message}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 412;
+    }
 }

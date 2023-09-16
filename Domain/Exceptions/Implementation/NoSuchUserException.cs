@@ -15,4 +15,9 @@ public class NoSuchUserException : AbstractRuntimeException
         : base( $"No such user with Login: {userLogin}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 404;
+    }
 }

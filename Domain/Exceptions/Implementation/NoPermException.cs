@@ -6,4 +6,9 @@ public class NoPermException : AbstractRuntimeException
         : base( $"No permissions. Error: {message}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 403;
+    }
 }

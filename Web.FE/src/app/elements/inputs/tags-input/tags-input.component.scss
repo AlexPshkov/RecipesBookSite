@@ -1,0 +1,21 @@
+@use '../../../../styles' as main-style;
+
+.tags-input {
+  padding: 8px;
+}
+
+.mat-chip.mat-standard-chip {
+  color: main-style.get-color(800);
+  cursor: pointer;
+  background-color: rgba(main-style.get-color(), 0.2);
+  border-radius: 5px;
+}
+
+.mat-standard-chip:hover::after {
+  opacity: 0.5;
+  background-color: rgba(main-style.get-color(), 0.2);
+}
+
+.mat-chip.mat-standard-chip::after {
+  background-color: rgba(main-style.get-color(), 0.2);;
+}

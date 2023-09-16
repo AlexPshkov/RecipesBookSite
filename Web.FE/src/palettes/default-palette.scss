@@ -1,0 +1,65 @@
+/*
+  Main color palette
+ */
+$light-palette: (
+  50: #808080, //fonts
+  55: #D3D5D9, //icons
+  100: #25292D, //fonts
+  200: #4A525A, //fonts
+  300: #FBF9F4, //footer background
+  400: #FFEFCC, //icons background
+  450: #FEFBF6, //background curve
+  500: #fdbf07,
+  600: #FDB100, //primary
+  700: #fd9e00,
+  800: #F29E1F, //icon color and some fonts
+  900: #fd6d01,
+  W100: #e31414, //warn color
+  B: #000000, //simple black
+  W: #ffffff, //simple white
+  contrast: (
+    50: #FEFEFB,
+    100: #E5E5E5, //background
+    200: #9196A1, //fonts color TOO
+    300: #3A3C41, //fonts color TOO
+    400: #fdc828,
+    500: #fdbf07,
+    600: #ffffff, //primary contrast
+    700: #fd9e00,
+    800: #fd8d00,
+    900: #fd6d01,
+  )
+);
+
+$dark-palette: (
+  50: #808080, //fonts
+  55: #D3D5D9, //icons
+  100: #d2d2d2, //fonts
+  200: #9d9d9d, //fonts
+  300: #020202, //footer background
+  400: #212121, //icons background
+  450: #0c0c0c, //background curve
+  500: #fdbf07,
+  600: #c58a00, //primary
+  700: #fd9e00,
+  800: #F29E1F, //icon color and some fonts
+  900: #fd6d01,
+  W100: #e31414, //warn color
+  B: #ffffff, //simple black
+  W: #000000, //simple white
+  contrast: (
+    50: #0a0a0a, //background REAL
+    100: #E5E5E5, //background in FIGMA
+    200: #949494, //fonts color TOO
+    300: #d2d2d2, //fonts color TOO
+    400: #fdc828,
+    500: #fdbf07,
+    600: #ffffff, //primary contrast
+    700: #fd9e00,
+    800: #fd8d00,
+    900: #fd6d01,
+  )
+);
+
+
+

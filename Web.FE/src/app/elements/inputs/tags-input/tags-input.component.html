@@ -1,0 +1,21 @@
+<mat-chip-list #chipList>
+  <mat-chip class="tag-block" *ngFor="let tag of tags" (removed)="remove(tag)">
+    {{tag.tagName}}
+    <button matChipRemove>
+      <mat-icon color="primary">cancel</mat-icon>
+    </button>
+  </mat-chip>
+  <input spellcheck="false"
+         autocomplete="false"
+         placeholder="Добавить теги"
+         class="tags-input"
+         type="text"
+         trimContent
+         *ngIf="!isTagsLimit()"
+         [disabled]="isTagsLimit()"
+         [maxLength]="15"
+         [matChipInputFor]="chipList"
+         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+         [matChipInputAddOnBlur]="true"
+         (matChipInputTokenEnd)="add($event)">
+</mat-chip-list>

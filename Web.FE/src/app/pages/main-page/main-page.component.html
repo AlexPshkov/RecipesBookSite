@@ -1,0 +1,69 @@
+<div class="container mat-typography ">
+
+  <header>
+    <div class="landing-block">
+      <h2>Готовь и делись рецептами</h2>
+      <h4>Никаких кулинарных книг и блокнотов! Храни все<br>любимые рецепты в одном месте.</h4>
+
+
+      <div class="buttons">
+        <button mat-flat-button color="primary" id="add-recipe-button" class="mat-display-4" (click)="addRecipe()">
+          <custom-svg class="label" name="plus-icon"></custom-svg>
+          Добавить рецепт
+        </button>
+        <button *ngIf="!userService.isAuthed" mat-flat-button id="join-profile-button" class="mat-display-4"
+                (click)="openRegisterDialog()">
+          Войти
+        </button>
+      </div>
+
+    </div>
+    <img id="landing-image" src="assets/images/main-page/landing-image.png" alt="">
+  </header>
+
+  <div class="advantages">
+    <h2>Умная сортировка по тегам</h2>
+    <h4>Добавляй рецепты и указывай наиболее популярные теги. Это позволит быстро находить любые категории.</h4>
+
+    <div class="filters">
+      <div (click)="makeSearch('Просто')">
+        <custom-svg name="book-icon" class="filter-icon"></custom-svg>
+        <h2>Простые блюда</h2>
+        <h4>Время приготвления таких блюд не более 1 часа</h4>
+      </div>
+      <div (click)="makeSearch('Детское')">
+        <custom-svg name="toy-icon" class="filter-icon"></custom-svg>
+        <h2>Детское</h2>
+        <h4>Самые полезные блюда которые можно детям любого возраста</h4>
+      </div>
+      <div (click)="makeSearch('От шеф-повара')">
+        <custom-svg name="hat-icon" class="filter-icon"></custom-svg>
+        <h2>От шеф-поваров</h2>
+        <h4>Требуют умения, времени и терпения, зато как в ресторане</h4>
+      </div>
+      <div (click)="makeSearch('На праздник')">
+        <custom-svg name="firework-icon" class="filter-icon"></custom-svg>
+        <h2>На праздник</h2>
+        <h4>Чем удивить гостей, чтобы все были сыты за праздничным столом</h4>
+      </div>
+    </div>
+
+  </div>
+
+  <best-recipe-block [hidden]="bestRecipe.recipeObject == null" #bestRecipe></best-recipe-block>
+
+  <div class="search">
+    <h2>Поиск рецептов</h2>
+    <h4>Введите примерное название блюда, а мы по тегам найдем его</h4>
+
+    <search-block (searchEvent)="makeSearch($event)"></search-block>
+
+  </div>
+
+</div>
+
+
+
+
+
+

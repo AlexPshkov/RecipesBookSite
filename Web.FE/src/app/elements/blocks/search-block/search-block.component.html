@@ -1,0 +1,21 @@
+<form class="search-form mat-typography">
+  <div class="search-filed">
+    <input id="input-field"
+           class="mat-h4"
+           type="text"
+           autocomplete="off"
+           spellcheck="false"
+           placeholder="Название блюда...."
+           #searchField
+           [value]="searchString"
+           (input)="onValueChange(searchField.value)">
+    <div class="search-tags">
+      <h4 *ngFor="let tag of tags" (click)="onSubmit(tag.tagName)">{{tag.tagName}}</h4>
+    </div>
+  </div>
+
+  <button id="submit-button" class="mat-h3" mat-flat-button color="primary" (click)="onSubmit(searchField.value)">
+    <span class="search-text">Поиск</span>
+  </button>
+</form>
+

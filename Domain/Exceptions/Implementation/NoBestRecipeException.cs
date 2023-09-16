@@ -6,4 +6,9 @@ public class NoBestRecipeException : AbstractRuntimeException
         : base( "There is no best recipe" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 500;
+    }
 }

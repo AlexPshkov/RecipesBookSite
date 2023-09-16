@@ -1,0 +1,228 @@
+@use '../../../styles' as main-style;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin-top: 55px;
+  z-index: 5;
+
+  //Image at the right top corner
+  #landing-image {
+    flex-wrap: nowrap;
+    position: relative;
+    top: -220px;
+    right: 0;
+    max-width: 602px;
+    max-height: 750px;
+    height: 50vw;
+    width: auto;
+
+    @media screen and (max-width: 1160px) {
+      display: none;
+    }
+  }
+
+  #landing-image {
+    @if (main-style.is-dark-theme()) {
+      filter: brightness(30%) contrast(150%);
+    }
+  }
+
+  //Block at the center with landing logo
+  .landing-block {
+    max-width: 688px;
+    width: 100%;
+    h2 {
+      color: main-style.get-color(100);
+      font-size: 72px !important;
+      line-height: 88px !important;
+
+      @media screen and (max-width: 860px) {
+        font-size: 42px !important;
+        line-height: 58px !important;
+      }
+    }
+
+    h4 {
+      color: main-style.get-color(200);
+      line-height: 28px !important;
+    }
+
+    .buttons {
+      display: flex;
+      margin-top: 39px;
+      gap: 24px;
+
+      @media screen and (max-width: 860px) {
+        flex-wrap: wrap;
+      }
+
+
+      #add-recipe-button { //Add button
+        .label {
+          margin-right: 23px;
+        }
+
+        padding: 16px 35px;
+        border-radius: 16px;
+        margin-bottom: 0;
+      }
+
+      #add-recipe-button:hover {
+        background-color: rgba(main-style.get-color(), 0.9);
+      }
+
+      #join-profile-button { //Join button
+        color: main-style.get-color();
+        border: 1px solid;
+        padding: 16px 78px;
+        border-radius: 16px;
+        background-color: transparent;
+        margin-bottom: 0;
+      }
+
+      #join-profile-button:hover {
+        background-color: rgba(main-style.get-color(), 0.05);
+      }
+    }
+  }
+
+}
+
+.advantages {
+  h2 {
+    color: main-style.get-color(100);
+    font-size: 42px !important;
+    line-height: 62px !important;
+  }
+
+  h4 {
+    color: main-style.get-color(200);
+    line-height: 32px !important;
+  }
+
+  .filters {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 29px;
+
+    div { //Box with filter example
+      width: 19%;;
+      padding: 32px 24px;
+      background: main-style.get-color(W);
+      box-shadow: 0 16px 72px rgba(34, 39, 47, 0.05);
+      min-width: 200px;
+      border-radius: 24px;
+      cursor: pointer;
+
+      .filter-icon {
+        display: inline-flex;
+        padding: 13px 14px;
+        background-color: main-style.get-color(400);
+        color: main-style.get-color(800);
+        border-radius: 12px;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        color: main-style.get-color(100);
+        font-size: 24px !important;
+        line-height: 30px !important;
+        margin-bottom: 16px;
+      }
+
+      h4 {
+        color: main-style.get-color(200);
+        font-size: 18px !important;
+        line-height: 30px !important;
+        margin-bottom: 0;
+      }
+
+      @media screen and (max-width: 565px) {
+        min-width: 130px;
+        .filter-icon {
+          padding: 9px 10px;
+          border-radius: 12px;
+          margin-bottom: 13px;
+        }
+
+        h2 {
+          font-size: 15px !important;
+          line-height: 22px !important;
+        }
+
+        h4 {
+          font-size: 14px !important;
+          line-height: 22px !important;
+        }
+      }
+
+      @media screen and (max-width: 425px) {
+        min-width: 75px;
+        padding: 17px 19px;
+        .filter-icon {
+          scale: 0.7;
+          padding: 9px 10px;
+          border-radius: 12px;
+          margin-bottom: 13px;
+        }
+
+        h2 {
+          font-size: 8px !important;
+          line-height: 15px !important;
+          margin-bottom: 0;
+        }
+
+        h4 {
+          font-size: 7px !important;
+          line-height: 15px !important;
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    div:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  @media screen and (max-width: 1160px) {
+    margin-top: 150px;
+  }
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+
+  h2 {
+    color: main-style.get-color(100);
+    font-size: 42px !important;
+    line-height: 51px !important;
+    margin-bottom: 0;
+  }
+
+  h4 {
+    color: main-style.get-color(200);
+    //font-family: 'Mulish'; //TODO ONLY HERE
+    font-size: 18px !important;
+    line-height: 32px !important;
+    font-feature-settings: 'case' on !important;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  search-block {
+    width: 100%;
+    margin-top: 64px;
+  }
+}
+

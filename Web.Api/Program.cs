@@ -1,6 +1,7 @@
 using Domain.Models.Auth;
 using Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Services;
 using Services.Extensions.Entity;
@@ -14,7 +15,15 @@ public static class Program
         WebApplicationBuilder applicationBuilder = WebApplication.CreateBuilder( args );
 
         applicationBuilder.Services.AddServices();
-        applicationBuilder.Services.AddInfrastructure( applicationBuilder.Configuration.GetValue<string>( "SQLConnection" )! );
+
+        string dbConnectionRawUrl = applicationBuilder.Configuration.GetValue<string>( "SQLConnection" )!;
+        string dbConnectionUrl = string.Format( dbConnectionRawUrl,
+            Environment.GetEnvironmentVariable( "DB_SERVER" ),
+            Environment.GetEnvironmentVariable( "DB_PORT" ),
+            Environment.GetEnvironmentVariable( "DB_USER" ),
+            Environment.GetEnvironmentVariable( "DB_PASSWORD" ) );
+        applicationBuilder.Services.AddInfrastructure( dbConnectionUrl );
+
         applicationBuilder.AddCustomAuth();
         
         applicationBuilder.AddCustomCorsPolicy( "AllowAll" );
@@ -36,9 +45,21 @@ public static class Program
         app.UseStaticFiles();
 
         app.MapControllers();
+        
+        app.MakeMigrations();
 
         app.Run();
     }
+
+    private static void MakeMigrations( this IHost webApplication )
+    {
+        using IServiceScope scope = webApplication.Services.CreateScope();
+        using DataBaseContext context = scope.ServiceProvider.GetRequiredService<DataBaseContext>();
+
+        context.Database.Migrate();
+
+        context.SaveChanges();
+    } 
     
     private static void AddCustomCorsPolicy( this WebApplicationBuilder builder, string policyName )
     {

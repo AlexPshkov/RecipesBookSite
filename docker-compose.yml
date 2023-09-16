@@ -1,0 +1,57 @@
+﻿version: '3.6'
+services:
+  web-front-end:
+    image: alexpshkov/recipes-site-fe
+    build: Web.FE/
+    entrypoint: ["nginx", "-g", "daemon off;"]
+    container_name: recipes-site-web-fe
+    ports:
+      - '80:80'
+    depends_on:
+      - web-api
+    networks:
+      - appnet
+      - internet
+
+  web-api:
+    container_name: recipes-site-web-api
+    image: alexpshkov/recipes-site-api
+    entrypoint: ["dotnet", "Web.Api.dll"]
+    build:
+      context: .
+      dockerfile: Web.Api/Dockerfile
+    environment: 
+      - "URLS=http://*:5204/"
+      - "ASPNETCORE_URLS=http://*:5204/"
+      - "DB_SERVER=recipes-site-app-db"
+      - "DB_PORT=5432"
+      - "DB_USER=alexpshkov"
+      - "DB_PASSWORD=jbierce123"
+    volumes:
+      - wwwroot:/app/wwwroot
+    depends_on:
+      - app-db
+    networks:
+      - appnet
+  
+  app-db:
+    container_name: recipes-site-app-db
+    image: postgres
+    restart: unless-stopped
+    environment:
+      - 'POSTGRES_PASSWORD=jbierce123'
+      - 'POSTGRES_PW=jbierce123'
+      - 'POSTGRES_USER=alexpshkov'
+    networks:
+      - appnet
+
+volumes:
+  wwwroot:
+
+networks:
+  internet:
+    name: internet
+    driver: bridge
+  appnet:
+    name: appnet
+    driver: bridge

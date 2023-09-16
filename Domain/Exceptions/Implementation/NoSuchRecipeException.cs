@@ -10,4 +10,9 @@ public class NoSuchRecipeException : AbstractRuntimeException
         : base( $"No such recipe with ID:{recipeId}" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 404;
+    }
 }

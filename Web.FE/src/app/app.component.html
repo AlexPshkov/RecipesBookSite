@@ -1,0 +1,44 @@
+<mat-drawer-container class="site-content" #siteContent autosize>
+  <div class="header-nav-bar">
+    <div class="left-part">
+
+      <button id="side-nav-open" mat-flat-button color="primary" (click)="drawer.toggle()">
+        <mat-icon fontIcon="menu"></mat-icon>
+      </button>
+
+      <h1>Recipes</h1>
+      <span class="spacer"></span>
+      <h3 *ngFor="let page of availablePages" routerLink="{{page.path}}"
+          [ngClass]="{'active-tab': isCurrentPage(page.path)}">{{page.title}}</h3>
+
+    </div>
+
+    <div class="right-part">
+      <div class="user-icon-block">
+        <custom-svg name="one-person-icon" (click)="profileButton()"></custom-svg>
+      </div>
+      <h3 *ngIf="!this.userService.isAuthed" (click)="joinButton()">Войти</h3>
+      <div class="logged-info" *ngIf="this.userService.isAuthed">
+        <h3 (click)="profileButton()">Привет, {{userService.userAccount.userName}}</h3>
+        <div class="line-separator"></div>
+        <custom-svg (click)="logoutButton()" name="logout-icon"></custom-svg>
+      </div>
+    </div>
+  </div>
+
+
+  <mat-drawer #drawer class="example-sidenav" mode="over">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <back-button></back-button>
+
+  <router-outlet></router-outlet>
+</mat-drawer-container>
+
+
+<footer class="mat-typography">
+  <h1>Recipes</h1>
+  <span class="mat-display-3">© Recipes 2021</span>
+</footer>
+

@@ -6,4 +6,9 @@ public class UserAlreadyExistsException : AbstractRuntimeException
         : base( $"User with login = {login} already exists" )
     {
     }
+    
+    public override int GetHttpStatusCode()
+    {
+        return 423;
+    }
 }
