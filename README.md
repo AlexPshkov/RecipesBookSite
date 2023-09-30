@@ -27,4 +27,4 @@
 
 
 ## Структура БД
-![alt text](https://github.com/AlexPshkov/RecipesSiteBackend/blob/master/RecipesSiteBackend/current_db_diagram.png?raw=true)
+![alt text](https://github.com/AlexPshkov/RecipesBookSite/blob/master/database_diagram.png?raw=true)
