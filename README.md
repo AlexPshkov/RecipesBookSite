@@ -1,6 +1,8 @@
 # RecipesSite
 Проекта «Книга рецептов» (тестовый проект для TravelLine)
 
+Посмотреть сайт можно по ссылке https://recipes.alexpshkov.ru/
+
 ##  Frontend
 
 ------
