@@ -65,12 +65,14 @@ public class RecipeRepository : IRecipeRepository
 
     public async Task<List<RecipeEntity>> GetRecipesBySearchQuery( string searchQuery, int start, int end )
     {
+        string lowerSearchQuery = searchQuery.ToLower();
+        
         IQueryable<int> recipesByName = _dbContext.Recipes
-            .Where( x => x.RecipeName.Contains( searchQuery ) )
+            .Where( x => x.RecipeName.ToLower().Contains( lowerSearchQuery ) )
             .Select( x => x.RecipeId );
 
         IQueryable<int> recipesByTag = _dbContext.Tags
-            .Where( x => x.Name.Contains( searchQuery ) )
+            .Where( x => x.Name.ToLower().Contains( lowerSearchQuery ) )
             .Include( x => x.Recipes )
             .SelectMany( x => x.Recipes, ( entity, recipeEntity ) => recipeEntity.RecipeId )
             .Distinct();

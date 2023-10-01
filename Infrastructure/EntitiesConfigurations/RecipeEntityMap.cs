@@ -11,7 +11,7 @@ public class RecipeEntityMap : IEntityTypeConfiguration<RecipeEntity>
         builder.HasKey( x => x.RecipeId );
         builder.Property( x => x.RecipeId ).ValueGeneratedOnAdd();
 
-        builder.Property( x => x.RecipeDescription ).HasMaxLength( 150 );
+        builder.Property( x => x.RecipeDescription ).HasMaxLength( 500 );
         builder.Property( x => x.RecipeName ).HasMaxLength( 150 );
         builder.Property( x => x.ImagePath ).HasMaxLength( 550 );
         builder.Property( x => x.RequiredTime ).HasMaxLength( 50 );
