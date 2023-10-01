@@ -43,7 +43,7 @@ public static class RecipesValidators
             throw new InvalidParamException( "RecipeDescription is empty" );
         }
 
-        if ( recipeDescription.Length > 500 )
+        if ( recipeDescription.Length > 270 )
         {
             throw new InvalidParamException( "Recipe description is too big" );
         }
